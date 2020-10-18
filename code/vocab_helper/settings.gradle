@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "vocabhelper"
+rootProject.name = "Vocab Helper"
