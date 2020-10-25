@@ -83,3 +83,7 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+# Ignore Mac and Windows Specific files
+._*
+.DS_Store
