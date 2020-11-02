@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.cs31620.vocabhelper.ui.dashboard
+package uk.ac.aber.dcs.cs31620.vocabhelper.ui.dictionary
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import uk.ac.aber.dcs.cs31620.vocabhelper.R
 
-class DashboardFragment : Fragment() {
+class DictionaryFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var dictionaryViewModel: DictionaryViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        dictionaryViewModel =
+                ViewModelProviders.of(this).get(DictionaryViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val textView: TextView = root.findViewById(R.id.text_home)
+        dictionaryViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
