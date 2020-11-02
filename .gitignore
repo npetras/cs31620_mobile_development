@@ -87,3 +87,4 @@ lint/tmp/
 # Ignore Mac and Windows Specific files
 ._*
 .DS_Store
+code/vocab_helper/.idea/
