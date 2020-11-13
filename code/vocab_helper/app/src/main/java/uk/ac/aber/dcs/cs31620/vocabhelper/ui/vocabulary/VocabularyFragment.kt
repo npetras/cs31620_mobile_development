@@ -4,15 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import uk.ac.aber.dcs.cs31620.vocabhelper.R
+import androidx.lifecycle.ViewModelProvider
+
+import androidx.recyclerview.widget.LinearLayoutManager
+import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.FragmentVocabularyBinding
+
 
 class VocabularyFragment : Fragment() {
 
-    private lateinit var vocabularyViewModel: VocabularyViewModel
+    private lateinit var vocabFragmentBinding: FragmentVocabularyBinding;
+    private lateinit var vocabViewModel: VocabularyViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -20,12 +22,17 @@ class VocabularyFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         vocabViewModel = ViewModelProvider(this).get(VocabularyViewModel::class.java)
-                ViewModelProviders.of(this).get(VocabularyViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_vocabulary, container, false)
-        val textView: TextView = root.findViewById(R.id.text_vocabulary)
-        vocabularyViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        vocabFragmentBinding = FragmentVocabularyBinding.inflate(inflater, container, false)
+        setupRecyclerView()
+        return vocabFragmentBinding.root
+    }
+
+    private fun setupRecyclerView() {
+        val recyclerView = vocabFragmentBinding.vocabularyList
+        recyclerView.setHasFixedSize(true)
+
+        val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,
+            false)
+        recyclerView.layoutManager = linearLayoutManager
     }
 }
