@@ -19,7 +19,7 @@ class VocabularyFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        vocabularyViewModel =
+        vocabViewModel = ViewModelProvider(this).get(VocabularyViewModel::class.java)
                 ViewModelProviders.of(this).get(VocabularyViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_vocabulary, container, false)
         val textView: TextView = root.findViewById(R.id.text_vocabulary)
