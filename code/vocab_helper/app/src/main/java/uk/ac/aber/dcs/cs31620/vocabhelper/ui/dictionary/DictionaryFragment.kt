@@ -21,7 +21,7 @@ class DictionaryFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         dictionaryViewModel =
-                ViewModelProviders.of(this).get(DictionaryViewModel::class.java)
+                ViewModelProvider(this).get(DictionaryViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dictionary, container, false)
         val textView: TextView = root.findViewById(R.id.text_dictionary)
         dictionaryViewModel.text.observe(viewLifecycleOwner, Observer {
