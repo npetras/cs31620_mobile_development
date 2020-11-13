@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.saved_words.SavedWordsFragment"
+        android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.VocabularyFragment"
         android:label="@string/title_saved_words"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_vocabulary" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.quiz.QuizFragment"
         android:label="@string/title_quiz"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_quiz" />
 </navigation>

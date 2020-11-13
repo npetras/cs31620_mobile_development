@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.cs31620.vocabhelper.ui.saved_words
+package uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import uk.ac.aber.dcs.cs31620.vocabhelper.R
 
-class SavedWordsFragment : Fragment() {
+class VocabularyFragment : Fragment() {
 
-    private lateinit var savedWordsViewModel: SavedWordsViewModel
+    private lateinit var vocabularyViewModel: VocabularyViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        savedWordsViewModel =
-                ViewModelProviders.of(this).get(SavedWordsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
+        vocabularyViewModel =
+                ViewModelProviders.of(this).get(VocabularyViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_vocabulary, container, false)
         val textView: TextView = root.findViewById(R.id.text_dashboard)
-        savedWordsViewModel.text.observe(viewLifecycleOwner, Observer {
+        vocabularyViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

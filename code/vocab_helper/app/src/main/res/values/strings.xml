@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Vocab Helper</string>
     <string name="title_dictionary">Dictionary</string>
-    <string name="title_saved_words">Saved Words</string>
+    <string name="title_saved_words">Vocabulary</string>
     <string name="title_quiz">Quiz Me</string>
 </resources>
