@@ -9,7 +9,7 @@
         android:id="@+id/navigation_dictionary"
         android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.dictionary.DictionaryFragment"
         android:label="@string/title_dictionary"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_dictionary" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

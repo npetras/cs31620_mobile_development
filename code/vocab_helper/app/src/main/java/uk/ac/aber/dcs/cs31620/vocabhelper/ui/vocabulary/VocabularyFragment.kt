@@ -22,7 +22,7 @@ class VocabularyFragment : Fragment() {
         vocabularyViewModel =
                 ViewModelProviders.of(this).get(VocabularyViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_vocabulary, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
+        val textView: TextView = root.findViewById(R.id.text_vocabulary)
         vocabularyViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
