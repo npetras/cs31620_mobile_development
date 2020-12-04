@@ -25,7 +25,7 @@ class VocabularyFragment : Fragment() {
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         vocabViewModel = ViewModelProvider(this).get(VocabularyViewModel::class.java)
         vocabFragmentBinding = FragmentVocabularyBinding.inflate(inflater, container, false)
         setupRecyclerView()
