@@ -3,4 +3,5 @@
     <string name="title_dictionary">Dictionary</string>
     <string name="title_saved_words">Vocabulary</string>
     <string name="title_quiz">Quiz Me</string>
+    <string name="vocab_fab_desc">Add a vocabulary item</string>
 </resources>
