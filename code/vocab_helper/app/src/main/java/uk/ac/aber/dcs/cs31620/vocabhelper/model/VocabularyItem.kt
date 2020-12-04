@@ -10,6 +10,7 @@ package uk.ac.aber.dcs.cs31620.vocabhelper.model
 data class VocabularyItem(
     val foreignWord: String = "",
     val translation: String = "",
-    val definition: String = ""
+    val definition: String = "",
+    val wordType: WordType = WordType.NONE
 ) {
 }

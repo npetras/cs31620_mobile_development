@@ -8,7 +8,8 @@ class VocabularyList {
         VocabularyItem(
             "Hallo",
             "Hello",
-            "Used as a greeting or to begin a phone conversation."
+            "Used as a greeting or to begin a phone conversation.",
+                WordType.EXCLAMATION
         ),
         VocabularyItem(
             "Servus",
@@ -16,17 +17,23 @@ class VocabularyList {
             """
                 Used as a greeting or to begin a phone conversation, predominently in the region of 
                 Bayern.
-            """.trimIndent()
+            """.trimIndent(),
+                WordType.EXCLAMATION
         ),
         VocabularyItem(
             "Guten Morgen",
             "Good morning",
-            "Used as a greeting in the morning"
+            "Used as a greeting in the morning",
+                    WordType.EXCLAMATION
         ),
         VocabularyItem(
-            "Hallo",
-            "Hello",
-            "Used as a greeting or to begin a phone conversation."
+            "Spielzeug",
+            "Toy",
+            """
+                    An object for a child to play with, typically a model or miniature 
+                    replica of something. 
+            """.trimIndent(),
+            WordType.NOUN
         ),
         VocabularyItem(
             "Servus",

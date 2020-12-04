@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import org.w3c.dom.Text
 import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.VocabularyItemBinding
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.VocabularyItem
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.WordType
+import java.util.*
 
 class VocabRecyclerAdapter(
     private val context: Context?,
@@ -20,7 +23,8 @@ class VocabRecyclerAdapter(
     inner class ViewHolder(
         itemView: View,
         private val foreignWord: TextView,
-        private val translation: TextView
+        private val translation: TextView,
+        private val wordType: TextView
     ) :
         RecyclerView.ViewHolder(itemView) {
 
@@ -29,8 +33,15 @@ class VocabRecyclerAdapter(
         }
 
         fun bindDataSet(vocabItem: VocabularyItem) {
+            val wordTypeValue = if (vocabItem.wordType != WordType.NONE) {
+                vocabItem.wordType.toString().toLowerCase(Locale.ROOT).capitalize(Locale.ROOT)
+            } else {
+                ""
+            }
+
             foreignWord.text = vocabItem.foreignWord
             translation.text = vocabItem.translation
+            wordType.text = wordTypeValue
         }
 
     }
@@ -44,7 +55,8 @@ class VocabRecyclerAdapter(
         return ViewHolder(
             vocabItemBinding.vocabularyCard,
             vocabItemBinding.foreignWord,
-            vocabItemBinding.translation
+            vocabItemBinding.translation,
+            vocabItemBinding.wordType
         )
     }
 
