@@ -6,17 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
 import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.VocabularyItemBinding
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.VocabularyItem
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.WordType
 import java.util.*
 
-class VocabRecyclerAdapter(
+class VocabularyRecyclerAdapter(
     private val context: Context?,
     private var dataSet: MutableList<VocabularyItem>
 ) :
-    RecyclerView.Adapter<VocabRecyclerAdapter.ViewHolder>() {
+    RecyclerView.Adapter<VocabularyRecyclerAdapter.ViewHolder>() {
 
     var clickListener: View.OnClickListener? = null
 
@@ -49,7 +48,7 @@ class VocabRecyclerAdapter(
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): VocabRecyclerAdapter.ViewHolder {
+    ): VocabularyRecyclerAdapter.ViewHolder {
         val vocabItemBinding =
             VocabularyItemBinding.inflate(LayoutInflater.from(context), parent, false)
         return ViewHolder(
@@ -62,7 +61,7 @@ class VocabRecyclerAdapter(
 
     override fun getItemCount(): Int = dataSet.size
 
-    override fun onBindViewHolder(holder: VocabRecyclerAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: VocabularyRecyclerAdapter.ViewHolder, position: Int) {
         holder.bindDataSet(dataSet[position])
     }
 
