@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.vocabulary_item.view.*
 import uk.ac.aber.dcs.cs31620.vocabhelper.R
 import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.FragmentVocabularyBinding
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.VocabularyList
@@ -18,15 +17,14 @@ import uk.ac.aber.dcs.cs31620.vocabhelper.model.VocabularyList
 
 class VocabularyFragment : Fragment() {
 
-    private lateinit var vocabFragmentBinding: FragmentVocabularyBinding;
-    private lateinit var vocabViewModel: VocabularyViewModel
+    private lateinit var vocabFragmentBinding: FragmentVocabularyBinding
+    private val vocabViewModel: VocabularyViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        vocabViewModel = ViewModelProvider(this).get(VocabularyViewModel::class.java)
         vocabFragmentBinding = FragmentVocabularyBinding.inflate(inflater, container, false)
         setupRecyclerView()
         return vocabFragmentBinding.root
@@ -40,9 +38,14 @@ class VocabularyFragment : Fragment() {
             false)
         recyclerView.layoutManager = linearLayoutManager
 
+        val vocabularyListLiveData = vocabViewModel.vocabularyItems
         val vocabularyList = VocabularyList().list
 
-        val vocabRecyclerAdapter = VocabRecyclerAdapter(context, vocabularyList.toMutableList())
+        vocabularyListLiveData.observe(viewLifecycleOwner) {
+            
+        }
+
+        val vocabRecyclerAdapter = VocabularyRecyclerAdapter(context, vocabularyList.toMutableList())
         recyclerView.adapter = vocabRecyclerAdapter
 
         vocabRecyclerAdapter.clickListener = View.OnClickListener {

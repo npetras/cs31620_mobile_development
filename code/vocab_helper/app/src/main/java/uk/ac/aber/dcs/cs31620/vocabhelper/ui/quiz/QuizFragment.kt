@@ -23,7 +23,7 @@ class QuizFragment : Fragment() {
         quizViewModel = ViewModelProvider(this).get(QuizViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_quiz, container, false)
         val textView: TextView = root.findViewById(R.id.text_quiz)
-        quizViewModel.text.observe(viewLifecycleOwner, Observer {
+        quizViewModel.text.observe(viewLifecycleOwner, {
             textView.text = it
         })
         return root
