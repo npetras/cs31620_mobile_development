@@ -13,10 +13,10 @@ import java.util.*
 
 class VocabularyRecyclerAdapter(
     private val context: Context?,
-    private var dataSet: MutableList<VocabularyItem>
 ) :
     RecyclerView.Adapter<VocabularyRecyclerAdapter.ViewHolder>() {
 
+    private var dataSet: MutableList<VocabularyItem> = mutableListOf()
     var clickListener: View.OnClickListener? = null
 
     inner class ViewHolder(

@@ -8,13 +8,14 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-
 import androidx.recyclerview.widget.LinearLayoutManager
 import uk.ac.aber.dcs.cs31620.vocabhelper.R
 import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.FragmentVocabularyBinding
-import uk.ac.aber.dcs.cs31620.vocabhelper.model.VocabularyList
 
-
+/**
+ * Set-ups data in the Vocabulary Fragment, creating a RecyclerView that contains the data from
+ * the database
+ */
 class VocabularyFragment : Fragment() {
 
     private lateinit var vocabFragmentBinding: FragmentVocabularyBinding
@@ -39,14 +40,12 @@ class VocabularyFragment : Fragment() {
         recyclerView.layoutManager = linearLayoutManager
 
         val vocabularyListLiveData = vocabViewModel.vocabularyItems
-        val vocabularyList = VocabularyList().list
+        val vocabRecyclerAdapter = VocabularyRecyclerAdapter(context)
+        recyclerView.adapter = vocabRecyclerAdapter
 
         vocabularyListLiveData.observe(viewLifecycleOwner) {
-            
+            vocabRecyclerAdapter.changeDataset(it.toMutableList())
         }
-
-        val vocabRecyclerAdapter = VocabularyRecyclerAdapter(context, vocabularyList.toMutableList())
-        recyclerView.adapter = vocabRecyclerAdapter
 
         vocabRecyclerAdapter.clickListener = View.OnClickListener {
             val foreignWord = it.findViewById<TextView>(R.id.foreignWord)

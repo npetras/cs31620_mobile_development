@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.cs31620.vocabhelper.model.datasource.typeconverters
+package uk.ac.aber.dcs.cs31620.vocabhelper.model.persistence.typeconverters
 
 import androidx.room.TypeConverter
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.WordType
