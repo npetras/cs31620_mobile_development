@@ -2,18 +2,12 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "dcc22d67ec4ebb46938869872a4afae6",
+    "identityHash": "7e5bdea024713486dc722cb6df9bd2df",
     "entities": [
       {
         "tableName": "vocabulary_item",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `foreign_word` TEXT NOT NULL, `translation` TEXT NOT NULL, `definition` TEXT NOT NULL, `word_type` TEXT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`foreign_word` TEXT NOT NULL, `translation` TEXT NOT NULL, `definition` TEXT NOT NULL, `word_type` TEXT NOT NULL, PRIMARY KEY(`foreign_word`, `translation`, `word_type`))",
         "fields": [
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "foreignWord",
             "columnName": "foreign_word",
@@ -41,9 +35,11 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "foreign_word",
+            "translation",
+            "word_type"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
         "indices": [],
         "foreignKeys": []
@@ -52,7 +48,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'dcc22d67ec4ebb46938869872a4afae6')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7e5bdea024713486dc722cb6df9bd2df')"
     ]
   }
 }

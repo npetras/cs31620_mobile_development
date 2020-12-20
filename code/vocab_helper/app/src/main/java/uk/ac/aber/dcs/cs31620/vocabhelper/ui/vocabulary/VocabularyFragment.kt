@@ -33,8 +33,6 @@ class VocabularyFragment : Fragment() {
 
     private fun setupRecyclerView() {
         val recyclerView = vocabFragmentBinding.vocabularyList
-        recyclerView.setHasFixedSize(true)
-
         val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,
             false)
         recyclerView.layoutManager = linearLayoutManager
