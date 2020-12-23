@@ -16,4 +16,13 @@
         android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.quiz.QuizFragment"
         android:label="@string/title_quiz"
         tools:layout="@layout/quiz_fragment" />
+    <fragment
+        android:id="@+id/introduction_navigation"
+        android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.introduction.IntroductionFragment"
+        android:label="introduction_fragment"
+        tools:layout="@layout/introduction_fragment" >
+        <action
+            android:id="@+id/action_introduction_navigation_to_vocabulary_navigation"
+            app:destination="@id/vocabulary_navigation" />
+    </fragment>
 </navigation>

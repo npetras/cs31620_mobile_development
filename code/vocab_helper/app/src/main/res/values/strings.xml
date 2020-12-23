@@ -4,4 +4,21 @@
     <string name="title_saved_words">Vocabulary</string>
     <string name="title_quiz">Quiz Me</string>
     <string name="vocab_fab_desc">Add a vocabulary item</string>
+
+    <!-- Introduction Screen -->
+    <string name="intro_native_language">Native Language</string>
+    <string name="intro_foreign_language">Language I want to learn</string>
+    <string name="intro_button_text">Confirm</string>
+
+    <string-array name="language_array">
+        <item>English</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Spanish</item>
+        <item>Italian</item>
+        <item>Mandarin</item>
+        <item>Irish</item>
+        <item>Welsh</item>
+        <item>Scottish</item>
+    </string-array>
 </resources>
