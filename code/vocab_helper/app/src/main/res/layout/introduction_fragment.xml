@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/app_title_intro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="124dp"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/native_lang_spinner_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:labelFor="@id/native_lang_spinner"
+        android:text="@string/intro_native_language"
+        app:layout_constraintBottom_toTopOf="@+id/native_lang_spinner"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Spinner
+        android:id="@+id/native_lang_spinner"
+        style="@style/Widget.AppCompat.Spinner.DropDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_title_intro" />
+
+    <TextView
+        android:id="@+id/foreign_lang_spinner_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:labelFor="@id/native_lang_spinner"
+        android:text="@string/intro_foreign_language"
+        app:layout_constraintBottom_toTopOf="@+id/foreign_lang_spinner"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/foreign_lang_spinner"
+        style="@style/Widget.AppCompat.Spinner.DropDown"
+        android:layout_width="match_parent"
+        android:layout_height="23dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/native_lang_spinner"
+        app:layout_constraintVertical_bias="0.117" />
+
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/intro_button_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foreign_lang_spinner"
+        android:onClick="confirm"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
