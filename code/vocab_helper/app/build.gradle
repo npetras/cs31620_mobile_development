@@ -78,10 +78,7 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
 
 
-//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-//    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
-//    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-
-
-
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 }
