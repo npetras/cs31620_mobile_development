@@ -10,6 +10,8 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import uk.ac.aber.dcs.cs31620.vocabhelper.ui.introduction.IntroductionFragment
+import uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.VocabularyFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,15 +25,13 @@ class MainActivity : AppCompatActivity() {
         setupNav()
     }
 
-    fun confirm(view: View) {
-        // TODO: store selections
-        navController.navigate(R.id.action_introduction_navigation_to_vocabulary_navigation)
-    }
-
     private fun setupToolbar() {
 
     }
 
+    /**
+     * Sets up the navigation for the Activity
+     */
     private fun setupNav() {
         bottomNavView = findViewById(R.id.bottom_nav)
         navController = findNavController(R.id.nav_host_fragment)
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         bottomNavView.setupWithNavController(navController)
 
 
-        // stack overflow
+        // hides bottom navigation when not on one of the main two fragments
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.vocabulary_navigation -> showBottomNav()
@@ -64,6 +64,31 @@ class MainActivity : AppCompatActivity() {
     private fun hideBottomNav() {
         bottomNavView.visibility = View.GONE
 
+    }
+
+    // onClick handlers for buttons
+
+    /**
+     * Handles 'Confirm' button in the [IntroductionFragment], transferring the user to the
+     * [VocabularyFragment] after the button is clicked, as well as storing their language
+     * selections
+     */
+    fun confirm(view: View) {
+        // TODO: store selections
+        navController.navigate(R.id.action_introduction_navigation_to_vocabulary_navigation)
+    }
+
+    /**
+     * Handles FAB in the [VocabularyFragment], taking the user to the [AddVocabularyFragment],
+     * where they can add a new vocabulary item
+     */
+    fun fabAddVocabularyItem(view: View) {
+        navController.navigate(R.id.action_vocabulary_navigation_to_add_vocabulary_navigation)
+    }
+
+    fun addVocabularyItem(view: View) {
+        // add item to vocabulary database
+        navController.navigate(R.id.action_add_vocabulary_navigation_to_vocabulary_navigation)
     }
 
 }

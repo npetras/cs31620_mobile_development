@@ -21,4 +21,22 @@
         <item>Welsh</item>
         <item>Scottish</item>
     </string-array>
+
+    <!-- Vocabulary Fragments -->
+    <!-- Main Vocabulary Fragment -->
+    <string name="vocab_fab_desc">Add a vocabulary item</string>
+
+    <!-- Add Vocabulary Item Fragment -->
+    <string name="vocab_foreign_word_label">Foreign Word</string>
+    <string name="vocab_translation_label">Translation</string>
+    <string name="vocab_definition_label">Definition</string>
+    <string name="vocab_foreign_word_helper_text">Foreign word you want to learn</string>
+    <string name="vocab_translation_helper_text">
+        Translation of the foreign word in your native language
+    </string>
+    <string name="vocab_definition_helper_text">
+        Meaning (definition) of this foreign word in your native language
+    </string>
+    <string name="vocab_add_button_text">Add</string>
+
 </resources>

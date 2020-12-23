@@ -8,8 +8,12 @@
     <fragment
         android:id="@+id/vocabulary_navigation"
         android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.VocabularyFragment"
-        android:label="@string/title_saved_words"
-        tools:layout="@layout/vocabulary_fragment" />
+        android:label="@string/title_vocabulary"
+        tools:layout="@layout/vocabulary_fragment" >
+        <action
+            android:id="@+id/action_vocabulary_navigation_to_add_vocabulary_navigation"
+            app:destination="@id/add_vocabulary_navigation" />
+    </fragment>
 
     <fragment
         android:id="@+id/quiz_navigation"
@@ -23,6 +27,14 @@
         tools:layout="@layout/introduction_fragment" >
         <action
             android:id="@+id/action_introduction_navigation_to_vocabulary_navigation"
+            app:destination="@id/vocabulary_navigation" />
+    </fragment>
+    <fragment
+        android:id="@+id/add_vocabulary_navigation"
+        android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.addingitems.AddVocabularyFragment"
+        tools:layout="@layout/add_vocabulary_fragment" >
+        <action
+            android:id="@+id/action_add_vocabulary_navigation_to_vocabulary_navigation"
             app:destination="@id/vocabulary_navigation" />
     </fragment>
 </navigation>
