@@ -1,11 +1,11 @@
 <resources>
+    <!-- App and Fragment titles -->
     <string name="app_name">Vocab Helper</string>
-    <string name="title_dictionary">Dictionary</string>
-    <string name="title_saved_words">Vocabulary</string>
+    <string name="title_vocabulary">Vocabulary</string>
     <string name="title_quiz">Quiz Me</string>
-    <string name="vocab_fab_desc">Add a vocabulary item</string>
+    <string name="title_add_vocabulary">Add Vocabulary Item</string>
 
-    <!-- Introduction Screen -->
+    <!-- Introduction Fragment -->
     <string name="intro_native_language">Native Language</string>
     <string name="intro_foreign_language">Language I want to learn</string>
     <string name="intro_button_text">Confirm</string>
