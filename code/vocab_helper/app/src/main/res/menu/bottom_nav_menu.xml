@@ -7,12 +7,12 @@
 <!--        android:title="@string/title_dictionary" />-->
 
     <item
-        android:id="@+id/navigation_vocabulary"
+        android:id="@+id/vocabulary_navigation"
         android:icon="@drawable/ic_baseline_favorite_24"
         android:title="@string/title_saved_words" />
 
     <item
-        android:id="@+id/navigation_quiz"
+        android:id="@+id/quiz_navigation"
         android:icon="@drawable/ic_baseline_assessment_24"
         android:title="@string/title_quiz" />
 

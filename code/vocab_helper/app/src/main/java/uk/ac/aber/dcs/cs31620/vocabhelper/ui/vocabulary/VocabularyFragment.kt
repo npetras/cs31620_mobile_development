@@ -9,8 +9,9 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import uk.ac.aber.dcs.cs31620.vocabhelper.MainActivity
 import uk.ac.aber.dcs.cs31620.vocabhelper.R
-import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.FragmentVocabularyBinding
+import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.VocabularyFragmentBinding
 
 /**
  * Set-ups data in the Vocabulary Fragment, creating a RecyclerView that contains the data from
@@ -18,7 +19,7 @@ import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.FragmentVocabularyBinding
  */
 class VocabularyFragment : Fragment() {
 
-    private lateinit var vocabFragmentBinding: FragmentVocabularyBinding
+    private lateinit var vocabFragmentBinding: VocabularyFragmentBinding
     private val vocabViewModel: VocabularyViewModel by viewModels()
 
     override fun onCreateView(
@@ -26,7 +27,7 @@ class VocabularyFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        vocabFragmentBinding = FragmentVocabularyBinding.inflate(inflater, container, false)
+        vocabFragmentBinding = VocabularyFragmentBinding.inflate(inflater, container, false)
         setupRecyclerView()
         return vocabFragmentBinding.root
     }

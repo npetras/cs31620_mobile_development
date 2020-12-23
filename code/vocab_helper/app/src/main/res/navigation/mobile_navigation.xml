@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@id/navigation_vocabulary">
+    app:startDestination="@id/introduction_navigation">
 
     <fragment
-        android:id="@+id/navigation_vocabulary"
+        android:id="@+id/vocabulary_navigation"
         android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.VocabularyFragment"
         android:label="@string/title_saved_words"
-        tools:layout="@layout/fragment_vocabulary" />
+        tools:layout="@layout/vocabulary_fragment" />
 
     <fragment
-        android:id="@+id/navigation_quiz"
+        android:id="@+id/quiz_navigation"
         android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.quiz.QuizFragment"
         android:label="@string/title_quiz"
-        tools:layout="@layout/fragment_quiz" />
+        tools:layout="@layout/quiz_fragment" />
 </navigation>
