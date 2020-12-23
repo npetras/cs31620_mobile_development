@@ -28,6 +28,7 @@ class VocabularyFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View {
         vocabFragmentBinding = VocabularyFragmentBinding.inflate(inflater, container, false)
+        (requireActivity() as MainActivity).supportActionBar!!.show()
         setupRecyclerView()
         return vocabFragmentBinding.root
     }

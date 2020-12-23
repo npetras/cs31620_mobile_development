@@ -1,8 +1,11 @@
 package uk.ac.aber.dcs.cs31620.vocabhelper
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -10,17 +13,57 @@ import androidx.navigation.ui.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var bottomNavView: BottomNavigationView
+    private lateinit var navController: NavController
+    private lateinit var toolbar: Toolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val navView: BottomNavigationView = findViewById(R.id.bottom_nav)
+        setupNav()
+    }
 
-        val navController = findNavController(R.id.nav_host_fragment)
+    fun confirm(view: View) {
+        // TODO: store selections
+        navController.navigate(R.id.action_introduction_navigation_to_vocabulary_navigation)
+    }
+
+    private fun setupToolbar() {
+
+    }
+
+    private fun setupNav() {
+        bottomNavView = findViewById(R.id.bottom_nav)
+        navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration =
-            AppBarConfiguration(setOf(R.id.navigation_vocabulary, R.id.navigation_quiz))
+            AppBarConfiguration(
+                setOf(
+                    R.id.vocabulary_navigation, R.id.quiz_navigation
+                )
+            )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        bottomNavView.setupWithNavController(navController)
+
+
+        // stack overflow
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.vocabulary_navigation -> showBottomNav()
+                R.id.quiz_navigation -> showBottomNav()
+                else -> hideBottomNav()
+            }
+        }
     }
+
+    private fun showBottomNav() {
+        bottomNavView.visibility = View.VISIBLE
+    }
+
+    private fun hideBottomNav() {
+        bottomNavView.visibility = View.GONE
+
+    }
+
 }
