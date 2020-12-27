@@ -18,8 +18,12 @@ import uk.ac.aber.dcs.cs31620.vocabhelper.R
 import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.AddVocabularyFragmentBinding
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.VocabularyItem
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.WordType
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.persistence.VocabHelperRoomDatabase
 import java.util.*
 
+/**
+ * Fragment to handle the adding of new vocabulary items
+ */
 class AddVocabularyFragment : Fragment() {
 
     private val viewModel: AddVocabularyViewModel by viewModels()
@@ -53,6 +57,13 @@ class AddVocabularyFragment : Fragment() {
         return viewBinding.root
     }
 
+
+    /**
+     * Click listener for the 'Add' button in this fragment.
+     * If the required fields are filled then a new [VocabularyItem] is created and added to the
+     * [VocabHelperRoomDatabase], otherwise the user is prompted to fill in the required fields
+     * that are currently empty.
+     */
     private fun setUpClickListenerOnAddButton() {
         addButton.setOnClickListener {
             val foreignWord = foreignWordTextInput.text.toString()
@@ -61,29 +72,52 @@ class AddVocabularyFragment : Fragment() {
             val errorText = "Please fill this field it is required"
 
             if (foreignWord == "" || translation == "") {
-                if (foreignWord == "") {
-                    foreignWordTextInput.error = errorText
-                }
-
-                if (translation == "") {
-                    translationTextInput.error = errorText
-                }
+                promptUserToFillRequiredFields(foreignWord, errorText, translation)
             } else {
-                val wordType = if (wordTypeDropdownField.text.toString() != "") {
-                    WordType.valueOf(wordTypeDropdownField.text.toString().toUpperCase(Locale.ROOT))
-                } else {
-                    WordType.NONE
-                }
-                val newVocabItem = VocabularyItem(
-                    foreignWord = foreignWord,
-                    translation = translation,
-                    wordType = wordType,
-                    definition = definitionTextInput.text.toString()
-                )
-                viewModel.repository.insertVocabItem(newVocabItem)
-                navController
-                    .navigate(R.id.action_add_vocabulary_navigation_to_vocabulary_navigation)
+                createNewVocabItem(foreignWord, translation)
             }
+        }
+    }
+
+    /**
+     * Creates a [VocabularyItem], using the Strings entered by the user (including [foreignWord]
+     * and [translation]), and adds it to the [VocabHelperRoomDatabase].
+     */
+    private fun createNewVocabItem(foreignWord: String, translation: String) {
+        val wordType = if (wordTypeDropdownField.text.toString() != "") {
+            WordType.valueOf(wordTypeDropdownField.text.toString().toUpperCase(Locale.ROOT))
+        } else {
+            WordType.NONE
+        }
+
+        val newVocabItem = VocabularyItem(
+            foreignWord = foreignWord,
+            translation = translation,
+            wordType = wordType,
+            definition = definitionTextInput.text.toString()
+        )
+
+        viewModel.repository.insertVocabItem(newVocabItem)
+        navController
+            .navigate(R.id.action_add_vocabulary_navigation_to_vocabulary_navigation)
+    }
+
+    /**
+     * If [foreignWord] inclusive or [translation] are empty (have to be provided by the user),
+     * then the user is prompted to enter the values for the empty required fields.
+     * The prompt is in the form of an error message visible on the empty required fields.
+     */
+    private fun promptUserToFillRequiredFields(
+        foreignWord: String,
+        errorText: String,
+        translation: String
+    ) {
+        if (foreignWord == "") {
+            foreignWordTextInput.error = errorText
+        }
+
+        if (translation == "") {
+            translationTextInput.error = errorText
         }
     }
 
