@@ -1,7 +1,9 @@
 package uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.addingitems
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.persistence.VocabHelperRepository
 
-class AddVocabularyViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class AddVocabularyViewModel(application: Application) : AndroidViewModel(application) {
+    val repository = VocabHelperRepository(application)
 }

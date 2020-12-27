@@ -6,6 +6,7 @@
     android:id="@+id/vocabulary_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardElevation="0dp"
     >
 
     <androidx.constraintlayout.widget.ConstraintLayout

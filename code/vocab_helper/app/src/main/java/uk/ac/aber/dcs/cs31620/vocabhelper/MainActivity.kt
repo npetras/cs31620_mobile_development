@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import uk.ac.aber.dcs.cs31620.vocabhelper.ui.introduction.IntroductionFragment
 import uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.VocabularyFragment
+import uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.addingitems.AddVocabularyFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -84,11 +85,6 @@ class MainActivity : AppCompatActivity() {
      */
     fun fabAddVocabularyItem(view: View) {
         navController.navigate(R.id.action_vocabulary_navigation_to_add_vocabulary_navigation)
-    }
-
-    fun addVocabularyItem(view: View) {
-        // add item to vocabulary database
-        navController.navigate(R.id.action_add_vocabulary_navigation_to_vocabulary_navigation)
     }
 
 }
