@@ -46,23 +46,14 @@ class AddVocabularyFragment : Fragment() {
         wordTypeDropdownField = viewBinding.textInputWordType
         definitionTextInput = viewBinding.textInputDefinition
 
-        // set-up word type dropdown
-        val items = WordType.values()
-        val itemsAsStrings = mutableListOf<String>()
-        val itemsAsStringsCapitalized = mutableListOf<String>()
-
-        items.forEach {
-            itemsAsStrings.add(it.toString())
-        }
-        itemsAsStrings.forEach {
-            itemsAsStringsCapitalized.add(it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT))
-        }
-
-        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, itemsAsStringsCapitalized)
-        (wordTypeDropdown.editText as? AutoCompleteTextView)?.setAdapter(adapter)
-
+        setUpWordTypeDropdown()
         navController = findNavController(this)
+        setUpClickListenerOnAddButton()
 
+        return viewBinding.root
+    }
+
+    private fun setUpClickListenerOnAddButton() {
         addButton.setOnClickListener {
             val foreignWord = foreignWordTextInput.text.toString()
             val translation = foreignWordTextInput.text.toString()
@@ -78,11 +69,15 @@ class AddVocabularyFragment : Fragment() {
                     translationTextInput.error = errorText
                 }
             } else {
+                val wordType = if (wordTypeDropdownField.text.toString() != "") {
+                    WordType.valueOf(wordTypeDropdownField.text.toString().toUpperCase(Locale.ROOT))
+                } else {
+                    WordType.NONE
+                }
                 val newVocabItem = VocabularyItem(
                     foreignWord = foreignWord,
                     translation = translation,
-                    wordType = WordType.valueOf(wordTypeDropdownField.text.toString().toUpperCase(
-                        Locale.ROOT)),
+                    wordType = wordType,
                     definition = definitionTextInput.text.toString()
                 )
                 viewModel.repository.insertVocabItem(newVocabItem)
@@ -90,8 +85,23 @@ class AddVocabularyFragment : Fragment() {
                     .navigate(R.id.action_add_vocabulary_navigation_to_vocabulary_navigation)
             }
         }
+    }
 
-        return viewBinding.root
+    private fun setUpWordTypeDropdown() {
+        // set-up word type dropdown
+        val items = WordType.values()
+        val itemsAsStrings = mutableListOf<String>()
+        val itemsAsStringsCapitalized = mutableListOf<String>()
+
+        items.forEach {
+            itemsAsStrings.add(it.toString())
+        }
+        itemsAsStrings.forEach {
+            itemsAsStringsCapitalized.add(it.toLowerCase(Locale.ROOT).capitalize(Locale.ROOT))
+        }
+
+        val adapter = ArrayAdapter(requireContext(), R.layout.list_item, itemsAsStringsCapitalized)
+        (wordTypeDropdown.editText as? AutoCompleteTextView)?.setAdapter(adapter)
     }
 
 }
