@@ -16,9 +16,10 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import uk.ac.aber.dcs.cs31620.vocabhelper.R
 import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.AddVocabularyFragmentBinding
-import uk.ac.aber.dcs.cs31620.vocabhelper.model.VocabularyItem
-import uk.ac.aber.dcs.cs31620.vocabhelper.model.WordType
-import uk.ac.aber.dcs.cs31620.vocabhelper.model.persistence.VocabHelperRoomDatabase
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.VocabularyItem
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.WordType
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.VocabHelperRoomDatabase
+// only way to import Locale.ROOT
 import java.util.*
 
 /**

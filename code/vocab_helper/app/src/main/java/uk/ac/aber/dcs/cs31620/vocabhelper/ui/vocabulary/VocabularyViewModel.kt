@@ -3,7 +3,7 @@ package uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import uk.ac.aber.dcs.cs31620.vocabhelper.model.persistence.VocabHelperRepository
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.VocabHelperRepository
 
 /**
  * View model for [VocabularyFragment]

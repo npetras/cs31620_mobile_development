@@ -1,4 +1,4 @@
-package uk.ac.aber.dcs.cs31620.vocabhelper.model
+package uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

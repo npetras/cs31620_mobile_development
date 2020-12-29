@@ -1,11 +1,11 @@
-package uk.ac.aber.dcs.cs31620.vocabhelper.model.persistence
+package uk.ac.aber.dcs.cs31620.vocabhelper.model.database
 
 import android.app.Application
 import androidx.lifecycle.LiveData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import uk.ac.aber.dcs.cs31620.vocabhelper.model.VocabularyItem
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.VocabularyItem
 
 class VocabHelperRepository (application: Application) {
     private val vocabularyDao = VocabHelperRoomDatabase.getInstance(application).vocabularyDao()

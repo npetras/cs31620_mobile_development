@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.VocabularyItemBinding
-import uk.ac.aber.dcs.cs31620.vocabhelper.model.VocabularyItem
-import uk.ac.aber.dcs.cs31620.vocabhelper.model.WordType
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.VocabularyItem
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.WordType
 import java.util.*
 
 class VocabularyRecyclerAdapter(
