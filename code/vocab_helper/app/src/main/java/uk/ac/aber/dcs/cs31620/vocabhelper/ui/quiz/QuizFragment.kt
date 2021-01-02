@@ -9,19 +9,22 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import uk.ac.aber.dcs.cs31620.vocabhelper.R
 
+/**
+ * Will handle the user's ability to review their Vocabulary, in a quiz style.
+ */
 class QuizFragment : Fragment() {
 
-    private lateinit var quizViewModel: QuizViewModel
+    private lateinit var viewModel: QuizViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        quizViewModel = ViewModelProvider(this).get(QuizViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(QuizViewModel::class.java)
         val root = inflater.inflate(R.layout.quiz_fragment, container, false)
         val textView: TextView = root.findViewById(R.id.text_quiz)
-        quizViewModel.text.observe(viewLifecycleOwner, {
+        viewModel.text.observe(viewLifecycleOwner, {
             textView.text = it
         })
         return root

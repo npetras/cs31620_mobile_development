@@ -2,7 +2,6 @@ package uk.ac.aber.dcs.cs31620.vocabhelper
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -10,15 +9,22 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.appbar.MaterialToolbar
 import uk.ac.aber.dcs.cs31620.vocabhelper.ui.introduction.IntroductionFragment
 import uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.VocabularyFragment
 import uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.addingitems.AddVocabularyFragment
 
+/**
+ * Set-ups navigation through the application (including the starting
+ * fragment/screen).
+ * Dictates on which fragments the  bottom navigation appears, and includes click listeners
+ * for buttons.
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navController: NavController
-    private lateinit var toolbar: Toolbar
+    private lateinit var toolbar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +37,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * Sets up the navigation for the Activity
+     * Sets up the navigation for the Activity, this includes the [navController] and
+     * [bottomNavView].
      */
     private fun setupNav() {
         bottomNavView = findViewById(R.id.bottom_nav)
@@ -47,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavView.setupWithNavController(navController)
 
-
         // hides bottom navigation when not on one of the main two fragments
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -58,10 +64,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Shows bottom navigation
+     */
     private fun showBottomNav() {
         bottomNavView.visibility = View.VISIBLE
     }
 
+    /**
+     * Hides bottom navigation
+     */
     private fun hideBottomNav() {
         bottomNavView.visibility = View.GONE
 

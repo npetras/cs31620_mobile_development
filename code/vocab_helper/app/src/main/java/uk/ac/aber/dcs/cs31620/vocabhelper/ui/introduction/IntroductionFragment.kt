@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
 import androidx.fragment.app.viewModels
+import com.google.android.material.textfield.TextInputLayout
 import uk.ac.aber.dcs.cs31620.vocabhelper.MainActivity
 import uk.ac.aber.dcs.cs31620.vocabhelper.R
 import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.IntroductionFragmentBinding
@@ -17,6 +19,8 @@ class IntroductionFragment : Fragment() {
     private val viewModel: IntroductionViewModel by viewModels()
     private lateinit var viewBinding: IntroductionFragmentBinding
     private lateinit var confirmButton: Button
+    private lateinit var nativeLangDropdown: TextInputLayout
+    private lateinit var foreignLangDropdown: TextInputLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,29 +28,19 @@ class IntroductionFragment : Fragment() {
     ): View {
         viewBinding = IntroductionFragmentBinding.inflate(inflater, container, false)
         confirmButton = viewBinding.confirmButton
-        val nativeLangSpinner = viewBinding.nativeLangSpinner
-        val foreignLangSpinner = viewBinding.foreignLangSpinner
+        nativeLangDropdown = viewBinding.textInputLayoutNativeLang
+        foreignLangDropdown = viewBinding.textInputLayoutForeignLang
 
-        context?.let {
-            ArrayAdapter.createFromResource(
-                it,
-                R.array.language_array,
-                android.R.layout.simple_spinner_item
-            ).also { adapter ->
-                // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                // Apply the adapter to the spinner
-                nativeLangSpinner.adapter = adapter
-                foreignLangSpinner.adapter = adapter
-            }
-        }
+        val adapter = context?.let { ArrayAdapter.createFromResource(it, R.array.language_array, R.layout.list_item) }
+        (nativeLangDropdown.editText as? AutoCompleteTextView)?.setAdapter(adapter)
+        (foreignLangDropdown.editText as? AutoCompleteTextView)?.setAdapter(adapter)
 
         (requireActivity() as MainActivity).supportActionBar!!.hide()
         return viewBinding.root
     }
 
-    fun confirm(view: View) {
-
+    fun confirmLanguageConfig(view: View) {
+        
     }
 
 

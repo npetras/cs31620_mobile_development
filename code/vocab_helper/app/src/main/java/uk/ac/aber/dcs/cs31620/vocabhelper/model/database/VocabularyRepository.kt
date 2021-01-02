@@ -7,8 +7,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.VocabularyItem
 
-class VocabHelperRepository (application: Application) {
-    private val vocabularyDao = VocabHelperRoomDatabase.getInstance(application).vocabularyDao()
+class VocabularyRepository (application: Application) {
+    private val vocabularyDao = VocabularyDatabase.getInstance(application).vocabularyDao()
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
 
     fun insertVocabItem(vocabularyItem: VocabularyItem) {

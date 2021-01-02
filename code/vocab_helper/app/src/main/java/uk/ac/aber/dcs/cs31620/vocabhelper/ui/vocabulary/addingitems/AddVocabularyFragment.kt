@@ -18,9 +18,11 @@ import uk.ac.aber.dcs.cs31620.vocabhelper.R
 import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.AddVocabularyFragmentBinding
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.VocabularyItem
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.WordType
-import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.VocabHelperRoomDatabase
+import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.VocabularyDatabase
 // only way to import Locale.ROOT
 import java.util.*
+
+const val ERROR_TEXT = "Please fill this field it is required"
 
 /**
  * Fragment to handle the adding of new vocabulary items
@@ -44,12 +46,12 @@ class AddVocabularyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         viewBinding = AddVocabularyFragmentBinding.inflate(inflater, container, false)
-        addButton = viewBinding.addVocabularyItemButton
         foreignWordTextInput = viewBinding.textInputForeignWord
         translationTextInput = viewBinding.textInputTranslation
         wordTypeDropdown = viewBinding.textInputLayoutWordType
         wordTypeDropdownField = viewBinding.textInputWordType
         definitionTextInput = viewBinding.textInputDefinition
+        addButton = viewBinding.addVocabularyItemButton
 
         setUpWordTypeDropdown()
         navController = findNavController(this)
@@ -58,11 +60,10 @@ class AddVocabularyFragment : Fragment() {
         return viewBinding.root
     }
 
-
     /**
      * Click listener for the 'Add' button in this fragment.
      * If the required fields are filled then a new [VocabularyItem] is created and added to the
-     * [VocabHelperRoomDatabase], otherwise the user is prompted to fill in the required fields
+     * [VocabularyDatabase], otherwise the user is prompted to fill in the required fields
      * that are currently empty.
      */
     private fun setUpClickListenerOnAddButton() {
@@ -70,10 +71,8 @@ class AddVocabularyFragment : Fragment() {
             val foreignWord = foreignWordTextInput.text.toString()
             val translation = foreignWordTextInput.text.toString()
 
-            val errorText = "Please fill this field it is required"
-
             if (foreignWord == "" || translation == "") {
-                promptUserToFillRequiredFields(foreignWord, errorText, translation)
+                promptUserToFillRequiredFields(foreignWord, translation)
             } else {
                 createNewVocabItem(foreignWord, translation)
             }
@@ -82,7 +81,7 @@ class AddVocabularyFragment : Fragment() {
 
     /**
      * Creates a [VocabularyItem], using the Strings entered by the user (including [foreignWord]
-     * and [translation]), and adds it to the [VocabHelperRoomDatabase].
+     * and [translation]), and adds it to the [VocabularyDatabase].
      */
     private fun createNewVocabItem(foreignWord: String, translation: String) {
         val wordType = if (wordTypeDropdownField.text.toString() != "") {
@@ -110,18 +109,21 @@ class AddVocabularyFragment : Fragment() {
      */
     private fun promptUserToFillRequiredFields(
         foreignWord: String,
-        errorText: String,
         translation: String
     ) {
         if (foreignWord == "") {
-            foreignWordTextInput.error = errorText
+            foreignWordTextInput.error = ERROR_TEXT
         }
 
         if (translation == "") {
-            translationTextInput.error = errorText
+            translationTextInput.error = ERROR_TEXT
         }
     }
 
+    /**
+     * Fill the [wordTypeDropdownField] with the right values.
+     * The list of strings from [WordType] are formatted, before being added to the dropdown
+     */
     private fun setUpWordTypeDropdown() {
         // set-up word type dropdown
         val items = WordType.values()
@@ -138,5 +140,4 @@ class AddVocabularyFragment : Fragment() {
         val adapter = ArrayAdapter(requireContext(), R.layout.list_item, itemsAsStringsCapitalized)
         (wordTypeDropdown.editText as? AutoCompleteTextView)?.setAdapter(adapter)
     }
-
 }

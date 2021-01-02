@@ -6,8 +6,17 @@
     <string name="title_add_vocabulary">Add Vocabulary Item</string>
 
     <!-- Introduction Fragment -->
-    <string name="intro_native_language">Native Language</string>
-    <string name="intro_foreign_language">Language I want to learn</string>
+    <string name="intro_text">
+        Please choose your native language, and the language you would like to learn:
+    </string>
+    <string name="intro_native_lang_label">Native Language</string>
+    <string name="intro_foreign_lang_label">Foreign Language</string>
+    <string name="intro_native_lang_helper_text">
+        Please select your native or other language in which you are fluent
+    </string>
+    <string name="intro_foreign_lang_helper_text">
+        Please select the foreign language you would like to learn
+    </string>
     <string name="intro_button_text">Confirm</string>
 
     <string-array name="language_array">

@@ -11,7 +11,7 @@ import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.VocabularyItem
 interface VocabularyDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
-    fun insertVocabItem(vocabItem: VocabularyItem)
+    fun insertVocabItem(vocabularyItem: VocabularyItem)
 
     @Query("SELECT * FROM vocabulary_item")
     fun getAllVocabItems(): LiveData<List<VocabularyItem>>

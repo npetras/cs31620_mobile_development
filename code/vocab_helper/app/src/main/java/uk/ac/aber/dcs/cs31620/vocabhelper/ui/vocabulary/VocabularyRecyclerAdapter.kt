@@ -11,9 +11,7 @@ import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.VocabularyItem
 import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.entity.WordType
 import java.util.*
 
-class VocabularyRecyclerAdapter(
-    private val context: Context?,
-) :
+class VocabularyRecyclerAdapter(private val context: Context?) :
     RecyclerView.Adapter<VocabularyRecyclerAdapter.ViewHolder>() {
 
     private var dataSet: MutableList<VocabularyItem> = mutableListOf()

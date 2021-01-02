@@ -15,31 +15,37 @@ import uk.ac.aber.dcs.cs31620.vocabhelper.databinding.VocabularyFragmentBinding
 
 /**
  * Set-ups data in the Vocabulary Fragment, creating a RecyclerView that contains the data from
- * the database
+ * the database.
  */
 class VocabularyFragment : Fragment() {
 
-    private lateinit var vocabFragmentBinding: VocabularyFragmentBinding
-    private val vocabViewModel: VocabularyViewModel by viewModels()
+    private lateinit var viewBinding: VocabularyFragmentBinding
+    private val viewModel: VocabularyViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View {
-        vocabFragmentBinding = VocabularyFragmentBinding.inflate(inflater, container, false)
+        viewBinding = VocabularyFragmentBinding.inflate(inflater, container, false)
         (requireActivity() as MainActivity).supportActionBar!!.show()
         setupRecyclerView()
-        return vocabFragmentBinding.root
+        return viewBinding.root
     }
 
+    /**
+     * Set-up the RecyclerView, attaching the [VocabularyRecyclerAdapter].
+     * Ensure that data is updated, every time it changes, by observing the LiveData from the
+     * Database.
+     * When an item in the RecyclerView is clicked a toast message appears.
+     */
     private fun setupRecyclerView() {
-        val recyclerView = vocabFragmentBinding.vocabularyList
+        val recyclerView = viewBinding.vocabularyList
         val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL,
             false)
         recyclerView.layoutManager = linearLayoutManager
 
-        val vocabularyListLiveData = vocabViewModel.vocabularyItems
+        val vocabularyListLiveData = viewModel.vocabularyItems
         val vocabRecyclerAdapter = VocabularyRecyclerAdapter(context)
         recyclerView.adapter = vocabRecyclerAdapter
 
