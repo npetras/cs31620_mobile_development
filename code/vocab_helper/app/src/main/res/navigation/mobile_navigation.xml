@@ -20,6 +20,7 @@
         android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.quiz.QuizFragment"
         android:label="@string/title_quiz"
         tools:layout="@layout/quiz_fragment" />
+
     <fragment
         android:id="@+id/introduction_navigation"
         android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.introduction.IntroductionFragment"
@@ -27,8 +28,12 @@
         tools:layout="@layout/introduction_fragment" >
         <action
             android:id="@+id/action_introduction_navigation_to_vocabulary_navigation"
-            app:destination="@id/vocabulary_navigation" />
+            app:destination="@id/vocabulary_navigation"
+            app:popUpTo="@id/introduction_navigation"
+            app:popUpToInclusive="true"
+            />
     </fragment>
+
     <fragment
         android:id="@+id/add_vocabulary_navigation"
         android:name="uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.addingitems.AddVocabularyFragment"

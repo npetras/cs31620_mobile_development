@@ -1,5 +1,6 @@
 package uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.addingitems
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -22,7 +23,6 @@ import uk.ac.aber.dcs.cs31620.vocabhelper.model.database.VocabularyDatabase
 // only way to import Locale.ROOT
 import java.util.*
 
-const val ERROR_TEXT = "Please fill this field it is required"
 
 /**
  * Fragment to handle the adding of new vocabulary items
@@ -53,9 +53,10 @@ class AddVocabularyFragment : Fragment() {
         definitionTextInput = viewBinding.textInputDefinition
         addButton = viewBinding.addVocabularyItemButton
 
-        setUpWordTypeDropdown()
         navController = findNavController(this)
-        setUpClickListenerOnAddButton()
+
+        setUpWordTypeDropdown()
+        addVocabularyItem()
 
         return viewBinding.root
     }
@@ -66,10 +67,10 @@ class AddVocabularyFragment : Fragment() {
      * [VocabularyDatabase], otherwise the user is prompted to fill in the required fields
      * that are currently empty.
      */
-    private fun setUpClickListenerOnAddButton() {
+    private fun addVocabularyItem() {
         addButton.setOnClickListener {
             val foreignWord = foreignWordTextInput.text.toString()
-            val translation = foreignWordTextInput.text.toString()
+            val translation = translationTextInput.text.toString()
 
             if (foreignWord == "" || translation == "") {
                 promptUserToFillRequiredFields(foreignWord, translation)
@@ -112,11 +113,11 @@ class AddVocabularyFragment : Fragment() {
         translation: String
     ) {
         if (foreignWord == "") {
-            foreignWordTextInput.error = ERROR_TEXT
+            foreignWordTextInput.error = getString(R.string.error_text_required_fields)
         }
 
         if (translation == "") {
-            translationTextInput.error = ERROR_TEXT
+            translationTextInput.error = getString(R.string.error_text_required_fields)
         }
     }
 

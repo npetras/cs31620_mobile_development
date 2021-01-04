@@ -1,4 +1,9 @@
 <resources>
+    <!-- Global error text -->
+    <string name="error_text_required_fields">
+        Please fill this field, it is a required field
+    </string>
+
     <!-- App and Fragment titles -->
     <string name="app_name">Vocab Helper</string>
     <string name="title_vocabulary">Vocabulary</string>
@@ -9,13 +14,13 @@
     <string name="intro_text">
         Please choose your native language, and the language you would like to learn:
     </string>
-    <string name="intro_native_lang_label">Native Language</string>
-    <string name="intro_foreign_lang_label">Foreign Language</string>
+    <string name="intro_native_lang_label">Native Language*</string>
+    <string name="intro_foreign_lang_label">Foreign Language*</string>
     <string name="intro_native_lang_helper_text">
-        Please select your native or other language in which you are fluent
+        Required*. Please select your native or other language in which you are fluent
     </string>
     <string name="intro_foreign_lang_helper_text">
-        Please select the foreign language you would like to learn
+        Required*. Please select the foreign language you would like to learn
     </string>
     <string name="intro_button_text">Confirm</string>
 
@@ -30,6 +35,14 @@
         <item>Welsh</item>
         <item>Scottish</item>
     </string-array>
+
+    <string name="intro_error_text_same_language">
+        Please select languages that are unique. You have selected a native and foreign language
+        that are the same.
+    </string>
+    <string name="intro_error_invalid_language">
+        Please select a valid language from the dropdown
+    </string>
 
     <!-- Vocabulary Fragments -->
     <!-- Main Vocabulary Fragment -->
@@ -51,5 +64,6 @@
         Meaning (definition) of this foreign word in your native language
     </string>
     <string name="vocab_add_button_text">Add</string>
+    <string name="app_bar_action_settings">Settings</string>
 
 </resources>

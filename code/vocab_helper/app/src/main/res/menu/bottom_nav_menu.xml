@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
-<!--    <item-->
-<!--        android:id="@+id/navigation_dictionary"-->
-<!--        android:icon="@drawable/ic_baseline_library_books_24"-->
-<!--        android:title="@string/title_dictionary" />-->
-
     <item
         android:id="@+id/vocabulary_navigation"
         android:icon="@drawable/ic_baseline_favorite_24"

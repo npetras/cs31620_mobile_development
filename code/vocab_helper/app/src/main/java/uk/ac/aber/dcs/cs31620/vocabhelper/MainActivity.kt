@@ -9,10 +9,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.appbar.MaterialToolbar
-import uk.ac.aber.dcs.cs31620.vocabhelper.ui.introduction.IntroductionFragment
 import uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.VocabularyFragment
 import uk.ac.aber.dcs.cs31620.vocabhelper.ui.vocabulary.addingitems.AddVocabularyFragment
+
+// keys for SharePreferences that define the Language Configuration/Settings for the application
+const val NATIVE_LANG_PREF = "nativeLanguage"
+const val FOREIGN_LANG_PREF = "foreignLanguage"
 
 /**
  * Set-ups navigation through the application (including the starting
@@ -24,7 +26,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNavView: BottomNavigationView
     private lateinit var navController: NavController
-    private lateinit var toolbar: MaterialToolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,17 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    // onClick handlers for buttons
-
-    /**
-     * Handles 'Confirm' button in the [IntroductionFragment], transferring the user to the
-     * [VocabularyFragment] after the button is clicked, as well as storing their language
-     * selections
-     */
-    fun confirm(view: View) {
-        // TODO: store selections
-        navController.navigate(R.id.action_introduction_navigation_to_vocabulary_navigation)
-    }
+    // onClick listeners for buttons
 
     /**
      * Handles FAB in the [VocabularyFragment], taking the user to the [AddVocabularyFragment],
